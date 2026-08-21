@@ -38,4 +38,6 @@ addopts = "-rs"
 dev = [
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
+    # conftest imports it directly, so declare it rather than leaning on inspect_ai's transitive.
+    "python-dotenv>=1.0",
 ]

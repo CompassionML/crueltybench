@@ -11,8 +11,13 @@ TestRealDataset, which skips when the gated dataset is unreachable.
 from pathlib import Path
 
 import pytest
+from dotenv import load_dotenv
 
 from abca.source import BIGBENCH_CANARY_GUID, load_bundle
+
+# Inspect loads .env only for its CLI, so pytest needs this to see HF_TOKEN and run the
+# TestRealDataset checks. Path-anchored, not cwd-relative; exported vars still win.
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 # The loader refuses a dataset with no canary, so the stand-ins have to carry one. ABCA's own GUID
 # is gated and appears nowhere in this repo; the loader checks the public BIG-bench marker.
