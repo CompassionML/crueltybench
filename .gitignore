@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Inspect AI eval logs
+logs/
+*.eval
+
+# Secrets / local env
+.env
+
+# ---------------------------------------------------------------------------
+# Benchmark data — the answer key. The scenarios and their tier anchors live in
+# the gated HuggingFace dataset, NOT in this repo: if they land in a training
+# scrape the benchmark stops measuring anything. Keep them ignored even when a
+# local copy is sitting in the working tree for a dev run.
+# NOTE: gitignoring does not untrack anything already committed.
+# ---------------------------------------------------------------------------
+prompts.csv
+rubric.csv
+abca/data/
+
+# Run outputs: HTML reports and CSVs embed the scenario prompts and the model
+# responses verbatim.
+results/
+
+# Scenario/scoring notes exported for review. `docs/` holds per-scenario tier-validation
+# write-ups — named after the scenarios and quoting their anchors, so it is answer key too.
+*.pdf
+docs/
+
+# HuggingFace cache, in case HF_HOME / HF_HUB_CACHE is ever pointed inside a
+# working tree — the cache holds the downloaded gated files.
+.cache/
+hf_cache/
+huggingface/
+datasets--*/
+
+# OS
+.DS_Store
+Thumbs.db
