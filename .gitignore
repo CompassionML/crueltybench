@@ -8,6 +8,11 @@ __pycache__/
 .venv/
 venv/
 
+# Build artefacts. `uv build` drops its own `dist/.gitignore`, but don't rely on the build
+# tool to ignore its output for us.
+dist/
+build/
+
 # Inspect AI eval logs
 logs/
 *.eval
