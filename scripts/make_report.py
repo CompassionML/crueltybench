@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Generate an HTML results page from a ABCA eval log.
+"""Generate an HTML results page from a CrueltyBench eval log.
 
 The page mirrors the hand-built gemini-3.5-flash report: headline metric cards, a
 welfare-tier distribution stack, a per-category bar chart, and one expandable card
@@ -37,7 +37,7 @@ sys.path.insert(0, str(REPO))
 
 from inspect_ai.log import read_eval_log  # noqa: E402
 
-from abca.scorer import audit_color, select_graders, tier_from_score  # noqa: E402
+from crueltybench.scorer import audit_color, select_graders, tier_from_score  # noqa: E402
 
 LOGS_DIR = REPO / "logs"
 STATS_DIR = REPO / "results" / "stats"
@@ -316,10 +316,10 @@ def render(report: dict, translations: dict) -> str:
 
     judges_line = " + ".join(graders)
 
-    return f"""<title>ABCA — {esc(report['model'])}</title>
+    return f"""<title>CrueltyBench — {esc(report['model'])}</title>
 {STYLE}
 
-<h1>ABCA results</h1>
+<h1>CrueltyBench results</h1>
 <p class="sub"><b>{esc(report['model'])}</b> · condition: <b>{esc(report['condition'])}</b></p>
 <p class="meta">{n_total} samples ({n_harm} harm · {n_ctrl} control) · judges: {esc(judges_line)} · run {esc(report['date'])}</p>
 

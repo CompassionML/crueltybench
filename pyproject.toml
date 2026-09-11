@@ -1,10 +1,10 @@
 [project]
-name = "abca"
+name = "crueltybench"
 version = "0.1.0"
-description = "ABCA (Adversarial Benchmark of Cruelty to Animals): an animal-welfare cruelty audit for LLMs (green / yellow / red)."
+description = "CrueltyBench: an animal-welfare cruelty audit for LLMs (green / yellow / red)."
 requires-python = ">=3.10"
 # MIT covers this harness only. The scenarios, tier anchors, and judge rubric come from the
-# gated HuggingFace dataset under its own `abca-eval-only-v1` terms — see README "Licensing".
+# gated HuggingFace dataset under its own `crueltybench-eval-only-v1` terms — see README "Licensing".
 license = "MIT"
 license-files = ["LICENSE"]
 
@@ -22,10 +22,10 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["abca"]
+packages = ["crueltybench"]
 
 # NOTE: the scenarios are no longer shipped in the package — they come from the gated
-# HuggingFace dataset at runtime (see abca/source.py), so there is nothing to force-include.
+# HuggingFace dataset at runtime (see crueltybench/source.py), so there is nothing to force-include.
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

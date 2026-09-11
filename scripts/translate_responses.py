@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Translate the non-English model responses in a ABCA eval log to English.
+"""Translate the non-English model responses in a CrueltyBench eval log to English.
 
 Reads a .eval log, and for every sample whose response is not in English, calls a
 translator model (Opus 5 on AWS Bedrock by default) to produce a faithful English

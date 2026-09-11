@@ -5,7 +5,7 @@ from pathlib import Path
 from inspect_ai import eval as inspect_eval
 from inspect_ai.model import ModelOutput, get_model
 
-from abca.abca import abca
+from crueltybench.crueltybench import crueltybench
 
 # Test runs write here instead of Inspect's default log dir (`./logs`, resolved against the
 # cwd), which is where real audit runs land. Without this, every `pytest` invocation left a
@@ -23,9 +23,9 @@ def _mock_graders():
     ]
 
 
-def test_abca_end_to_end() -> None:
+def test_crueltybench_end_to_end() -> None:
     [log] = inspect_eval(
-        tasks=abca(grader_models=_mock_graders()),
+        tasks=crueltybench(grader_models=_mock_graders()),
         limit=2,
         model="mockllm/model",
         log_dir=str(TEST_LOG_DIR),
