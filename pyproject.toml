@@ -9,9 +9,16 @@ license = "MIT"
 license-files = ["LICENSE"]
 
 # `openai` is required by Inspect's OpenRouter provider (OpenRouter speaks the OpenAI
-# wire format) — every target and judge in this repo routes through it, so it's a hard
+# wire format), which is the default route for every target and judge here — so it's a hard
 # dependency, not an optional extra.
+#
+# `anthropic` and `google-genai` are Inspect's optional clients for the *direct* providers. The
+# panel is provider-agnostic (`-T grader_models=["anthropic/claude-opus-5", ...]` runs the same
+# judges on your own Anthropic/Google keys), and without these installed that path fails at model
+# construction with a dependency error rather than working. Declared here so `uv sync` is enough.
 dependencies = [
+    "anthropic>=0.40",
+    "google-genai>=1.0",
     "huggingface-hub>=0.34",
     "inspect_ai>=0.3.100",
     "openai>=1.0",
